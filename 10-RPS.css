@@ -1,0 +1,103 @@
+body{
+    font-family:Roboto;
+    background-color: rgb(24, 24, 24);
+    color: white;
+}
+
+.gameTitle{
+    font-size: 50px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.guessContainer{
+    display: flex;
+    column-gap: 30px;
+    margin-bottom: 70px;
+    justify-content: center;
+    align-items: center;
+}
+
+.guess{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid white;
+    border-radius: 50%;
+    padding: 20px;
+    transition: background-color 0.6s,
+                border-color 0.6s,
+                box-shadow 0.6s;
+    cursor: pointer;
+}
+
+.guess:hover{
+    background-color: #ffffff;
+    border-color: rgb(225, 150, 39);
+    box-shadow: 0 0 40px rgb(225, 150, 39);
+
+}
+
+.guess:active{
+    background-color: rgb(225, 150, 39);
+    border-color: white;
+    box-shadow: 0 0 40px white;
+}
+
+.guess img{
+    height: 70px;
+}
+
+.result{
+    font-size: 30px;
+    text-align: center;
+
+}
+.chosed{
+    text-align: center;
+    font-size: 25px;
+}
+
+.score-container{
+   display:flex;
+   flex-direction: row;
+   justify-content: center;
+   column-gap: 20px;
+   margin-bottom: 40px;
+   font-size: 27px;
+}
+
+.wins{
+    color: greenyellow;
+    font-size: 35px;
+}
+.losses{
+    color: red;
+    font-size: 35px;
+}
+.ties{
+    color:rgb(225, 150, 39);
+    font-size: 35px;
+}
+
+.btnReset{
+    background-color: #ffffff;
+    border:none;
+    font-size: 25px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: block;
+    margin: 50px auto 0px auto;
+    cursor: pointer;
+    transition: background-color 0.4s,
+                box-shadow 0.4s,
+                color 0.4s;
+}
+
+.btnReset:hover{
+    background-color: black;
+    box-shadow: 0px 0px 40px white;
+    color: white;
+}
+

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM RPS</title>
+        <link rel="stylesheet" href ="10-RPS.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <p class="gameTitle">Rock Paper Scissors Game</p>
+
+        <div class="score-container">
+            <p class="Score-win"></p>
+            <p class="Score-loose"></p>
+            <p class="Score-tie"></p>
+        </div>
+
+        <div class="guessContainer">
+            <div class="guess" onclick="playGame('Rock')">
+                <img src="10_RPS_ICONS/Rock.png">
+            </div>
+            <div class="guess" onclick="playGame('Paper')">
+                <img src="10_RPS_ICONS/Paper.png" >
+            </div>
+            <div class="guess" onclick="playGame('Scissor')">
+                <img src="10_RPS_ICONS/Scissor.png">
+            </div>
+          
+        </div>
+
+        <p class="result"></p>
+        <p class="chosed"></p>
+       
+
+        <button class="btnReset" onclick="resetScore()">Reset Score</button>
+
+        <script>
+            let score;
+
+            function getScore(){
+                score = JSON.parse(localStorage.getItem('score')) || {
+                wins: 0,
+                losses: 0,
+                ties:0
+            }
+            }
+            
+            getScore();
+
+            
+
+            document.querySelector('.Score-win').innerHTML = `Wins : <span class="wins">${score.wins}</span>`;
+
+            document.querySelector('.Score-loose').innerHTML = `Losses : <span class="losses">${score.losses}</span>`;
+
+            document.querySelector('.Score-tie').innerHTML = `Ties : <span class="ties">${score.ties}</span>`;
+
+            
+            function playGame(playerMove){
+                 const computerMove = computersMove();
+                let result = '';
+
+                if(playerMove === 'Rock'){
+                    if(computerMove === 'Rock'){
+                        result = 'Tie';
+                    }else if(computerMove === 'Paper'){
+                        result = 'Lose';
+                    }
+                    else if(computerMove === 'Scissor'){
+                        result = 'Win';
+                    }
+                }
+                else if(playerMove === 'Paper'){
+                    if(computerMove === 'Rock'){
+                        result = 'Win'
+                    }
+                    else if(computerMove === 'Paper'){
+                        result = 'Tie';
+                    }
+                    else if (computerMove === 'Scissor'){
+                        result = 'Lose';
+                    }
+                }
+                else if(playerMove === 'Scissor'){
+                    if(computerMove === 'Rock'){
+                        result = "Lose";
+                    }else if(computerMove === 'Paper'){
+                        result = 'Win';
+                    }else if(computerMove === 'Scissor'){
+                        result = 'Tie';
+                    }
+                }
+
+                if(result === 'Win'){
+                    score.wins++;
+
+                    document.querySelector('.result').innerHTML = `You ${result}`;
+                    // alert(`Computer Move: ${computerMove}
+                    //        Your Move: ${playerMove}
+                    //        You Win !
+                    //        Wins: ${score.wins}, Losses : ${score.losses}, Ties: ${score.ties}`);
+                }
+                else if(result === 'Lose'){
+                    score.losses++;
+                    document.querySelector('.result').innerHTML = `You ${result}`;
+                    // alert(`Computer Move: ${computerMove}
+                    //        Your Move: ${playerMove}
+                    //        You Lose !
+                    //        Wins: ${score.wins}, Losses : ${score.losses}, Ties: ${score.ties}`);
+                }
+                else if(result === 'Tie'){
+                    score.ties++;
+                    document.querySelector('.result').innerHTML = `It's a ${result}`;
+                    // alert(`Computer Move: ${computerMove}
+                    //        Your Move: ${playerMove}
+                    //        It's a Tie !
+                    //        Wins: ${score.wins}, Losses : ${score.losses}, Ties: ${score.ties}`);
+                }
+
+
+                document.querySelector('.chosed').innerHTML = `You ${decision(playerMove)}
+                                                                ${decision(computerMove)} Computer`;
+                localStorage.setItem('score', JSON.stringify(score));
+                document.querySelector('.Score-win').innerHTML = `Wins: <span class="wins">${score.wins}</span>`;
+
+                document.querySelector('.Score-loose').innerHTML = `Losses: <span class="losses">${score.losses}</span>`;
+
+                document.querySelector('.Score-tie').innerHTML = `Ties: <span class="ties">${score.ties}</span>`;
+
+            }
+
+            function decision(Move){
+             switch (Move) {
+                    case 'Rock':
+                        return '<img src="10_RPS_ICONS/Rock.png" width="40" height="40">';
+                    case 'Paper':
+                        return '<img src="10_RPS_ICONS/Paper.png" width="40" height="40">';
+                    case 'Scissor':
+                        return '<img src="10_RPS_ICONS/Scissor.png" width="40" height="40">';
+                    default:
+                        return '';
+                }
+            }
+            
+
+            function computersMove(){
+                const RandNum = Math.floor(Math.random()*10) + 1;
+                if(RandNum >= 0 && RandNum <= 3){
+                    comMove = 'Rock';
+                }else if(RandNum > 3 && RandNum <= 6){
+                    comMove = 'Paper';
+                }else{
+                    comMove = 'Scissor';            
+                }
+
+                return comMove;
+            }
+
+            function resetScore(){
+                localStorage.removeItem('score');
+                location.reload(); 
+            }
+           
+        </script>
+    </body>
+</html>
