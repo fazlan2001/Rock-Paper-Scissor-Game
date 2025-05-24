@@ -93,5 +93,16 @@ function computersMove() {
 
 function resetScore() {
     localStorage.removeItem('score');
-    location.reload();
+
+    score = {
+        wins: 0,
+        losses: 0,
+        ties: 0
+    };
+    document.querySelector('.Score-win').innerHTML = `Wins : <span class="wins">${score.wins}</span>`;
+    document.querySelector('.Score-loose').innerHTML = `Losses : <span class="losses">${score.losses}</span>`;
+    document.querySelector('.Score-tie').innerHTML = `Ties : <span class="ties">${score.ties}</span>`;
+
+    document.querySelector('.result').innerHTML = '';
+    document.querySelector('.chosed').innerHTML = '';
 }
