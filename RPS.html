@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM RPS</title>
+        <link rel="stylesheet" href ="RPS.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <p class="gameTitle">Rock Paper Scissors Game</p>
+
+        <div class="score-container">
+            <p class="Score-win"></p>
+            <p class="Score-loose"></p>
+            <p class="Score-tie"></p>
+        </div>
+
+        <div class="guessContainer">
+            <div class="guess-Rock" onclick="playGame('Rock')">
+                <img src="10_RPS_ICONS/Rock.png">
+            </div>
+            <div class="guess-Paper" onclick="playGame('Paper')">
+                <img src="10_RPS_ICONS/Paper.png" >
+            </div>
+            <div class="guess-Scissor" onclick="playGame('Scissor')">
+                <img src="10_RPS_ICONS/Scissor.png">
+            </div>
+          
+        </div>
+
+        <p class="result"></p>
+        <p class="chosed"></p>
+       
+
+        <button class="btnReset" onclick="resetScore()">Reset Score</button>
+
+        <script src="RPS.js"> </script>
+    </body>
+</html>

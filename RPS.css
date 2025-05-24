@@ -19,7 +19,7 @@ body{
     align-items: center;
 }
 
-.guess{
+.guess-Rock , .guess-Paper, .guess-Scissor{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,20 +32,20 @@ body{
     cursor: pointer;
 }
 
-.guess:hover{
+.guess-Rock:hover, .guess-Paper:hover, .guess-Scissor:hover{
     background-color: #ffffff;
     border-color: rgb(225, 150, 39);
     box-shadow: 0 0 40px rgb(225, 150, 39);
 
 }
 
-.guess:active{
+.guess-Rock:active, .guess-Paper:active, .guess-Scissor:active{
     background-color: rgb(225, 150, 39);
     border-color: white;
     box-shadow: 0 0 40px white;
 }
 
-.guess img{
+.guess-Rock img, .guess-Paper img, .guess-Scissor img{
     height: 70px;
 }
 
