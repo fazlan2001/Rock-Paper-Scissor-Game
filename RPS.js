@@ -5,6 +5,7 @@ getScore();
 document.querySelector('.Score-win').innerHTML = `Wins : <span class="wins">${score.wins}</span>`;
 document.querySelector('.Score-loose').innerHTML = `Losses : <span class="losses">${score.losses}</span>`;
 document.querySelector('.Score-tie').innerHTML = `Ties : <span class="ties">${score.ties}</span>`;
+const btnAutoPlay = document.querySelector('.btnAutoPlay');
 
 
 
@@ -16,6 +17,31 @@ function getScore() {
     }
 }
 
+let isAutoPlaying = false;
+let intervalId;
+
+function autoPlay()
+{
+    if(!isAutoPlaying){
+        intervalId = setInterval(() => {
+        const playerMove = computersMove();
+        playGame(playerMove);
+    }, 1000);
+    isAutoPlaying = true;
+    
+    btnAutoPlay.innerHTML = 'Stop Auto Play';
+    //btnAutoPlay.classList.add('playing');
+    }
+    else{
+        clearInterval(intervalId);
+        isAutoPlaying = false;
+        btnAutoPlay.innerHTML = 'Auto Play'
+        //btnAutoPlay.classList.remove('playing');
+    }
+
+    btnAutoPlay.classList.toggle('playing');
+    
+}
 function playGame(playerMove) {
     const computerMove = computersMove();
     let result = '';
